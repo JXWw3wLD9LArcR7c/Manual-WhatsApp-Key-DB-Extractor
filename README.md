@@ -10,13 +10,12 @@ For a more automated and less hands-on version of this, visit https://github.com
 ###### KEY DIFFERENCES:
 
 - It won't decrypt the database for you
-- You are expected to install the old whatsapp apk yourself (you may have to unnistall whatsapp)
-- Your whatsapp version prior to running this is not backed up. You are going to have to find a way to download it online
+- You are expected to install the old whatsapp apk yourself (you may have to unnistall whatsapp). See prerequisites
+- Your whatsapp version prior to running this is not backed up. You are going to have to find a way to download it (Through google play or some other store if you want the newest)
 - No powershell or sh version. Might do powershell though (not sh, I am not familiar with it)
 - No backup (You should not lose data if you unnistall whatsapp, I still advice you to backup)
 - No sanity checks at all. Nothing is going to tell you that have the right version or etc
 - It won't detect your android version. Instead you need to choose the file that fits your version.
-- It won't tell you that your version is too old
 
 ###### BRANCH UPDATES:
 v4.7-E1.0-M - Unofficial version to fix some errors which appear on newer android versions (7+). Also the first version used on this fork.  
