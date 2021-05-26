@@ -38,12 +38,12 @@ if %sdkver% leq 13 (
 )
 
 Echo If you have the newest Whatsapp version, it may not work. Please install the legacy from here http://whatcrypt.com/WhatsApp-2.11.431.apk
-echo Press any key once you do
+Echo or place it in the same directory as this batch (you may had to edit the batch if you got it from somewhere else)
 Pause
+bin\adb.exe install -r -d WhatsApp-2.11.431.apk
 
 echo After that, please start/launch downgraded WhatsApp application if you haven't.
 echo It seems to help avoiding empty or incomplete backup via ^"adb backup^" command
-echo Press any key once started
 pause 
 
 
