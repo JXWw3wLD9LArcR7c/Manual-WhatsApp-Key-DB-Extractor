@@ -3,15 +3,19 @@ Allows WhatsApp users to extract their cipher key and databases on non-rooted An
 This version is intended to be foolproof, it has to work. It's focus is to help manually diagnose errors that the original has and make people do more work manually. It might be more work but at least you can make sure that this will work. There are some key differences and disadvantages though (basically, less automation)
 I had a lot of issues with the original one, stuff like not finding a file and etc. I said fuck this and did it myself and I used the code as a guide, and it worked.
 
+Code can get outdated very quickly. And if no one is able to keep up, you might as well remove the parts that make it harder to maintain.
+
 For a more automated and less hands-on version of this, visit https://github.com/p4r4d0x86/WhatsApp-Key-DB-Extractor/
 
 ###### KEY DIFFERENCES:
 
+- It won't decrypt the database for you
 - You are expected to install the old whatsapp apk yourself
 - Your whatsapp version prior to running this is not backed up. You are going to have to find a way to download it online
 - No powershell or sh version. Might do powershell though (not sh, I am not familiar with it)
 - No backup (You should not lose data if you unnistall whatsapp, I still advice you to backup)
 - No sanity checks at all. Nothing is going to tell you that have the right version or etc
+- It won't detect your android version. Instead you need to choose the file that fits your version.
 
 ###### BRANCH UPDATES:
 v4.7-E1.0-M - Unofficial version to fix some errors which appear on newer android versions (7+). Also the first version used on this fork
@@ -32,7 +36,8 @@ v4.7 - Added new sanity checks and support for Android API 24 (7.0 Nougat).
  4. USB Debugging must be enabled on the target device. Settings -> Developer Options -> (Debugging) USB debugging  
      If you cannot find Developer Options then please go to: Settings -> About phone/device and tap the Build number  
      multiple times until you're finally declared a developer.  
- 5. Android device with Android 4.0 or higher. I.E. Ice Cream Sandwich, Jelly Bean, KitKat, Lollipop, Marshmallow or Nougat.  
+ 5. Android device with Android 4.0 or higher. I.E. Ice Cream Sandwich, Jelly Bean, KitKat, Lollipop, Marshmallow or Nougat. 
+ 6. A way to decrypt your database. You can use tools like Whatsapp Viewer or WhatCrypt.
 
 
 ###### INSTRUCTIONS:
