@@ -3,7 +3,7 @@ Allows WhatsApp users to extract their cipher key and databases on non-rooted An
 This version is intended to be foolproof, it has to work. It's focus is to help manually diagnose errors that the original has and make people do more work manually. It might be more work but at least you can make sure that this will work. There are some key differences and disadvantages though (basically, less automation)
 I had a lot of issues with the original one, stuff like not finding a file and etc. I said fuck this and did it myself and I used the code as a guide, and it worked.
 
-Code can get outdated very quickly. And if no one is able to keep up, you might as well remove the parts that make it harder to maintain, so it can work for a longer amount of time and you can keep up.
+Code can get outdated very quickly. And if no one is able to keep up, you might as well remove the parts that make it harder to maintain, so it can work for a longer amount of time and you can keep up. I still want the original version to get updated, but we still need a version that works at least most of the time
 
 For a more automated and less hands-on version of this, visit https://github.com/p4r4d0x86/WhatsApp-Key-DB-Extractor/
 
