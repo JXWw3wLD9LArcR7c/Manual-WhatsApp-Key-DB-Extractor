@@ -10,7 +10,7 @@ For a more automated and less hands-on version of this, visit https://github.com
 ###### KEY DIFFERENCES:
 
 - It won't decrypt the database for you
-- You are expected to install the old whatsapp apk yourself
+- You are expected to install the old whatsapp apk yourself (you may have to unnistall whatsapp)
 - Your whatsapp version prior to running this is not backed up. You are going to have to find a way to download it online
 - No powershell or sh version. Might do powershell though (not sh, I am not familiar with it)
 - No backup (You should not lose data if you unnistall whatsapp, I still advice you to backup)
