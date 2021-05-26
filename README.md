@@ -16,6 +16,7 @@ For a more automated and less hands-on version of this, visit https://github.com
 - No backup (You should not lose data if you unnistall whatsapp, I still advice you to backup)
 - No sanity checks at all. Nothing is going to tell you that have the right version or etc
 - It won't detect your android version. Instead you need to choose the file that fits your version.
+- It won't tell you that your version is too old
 
 ###### BRANCH UPDATES:
 v4.7-E1.0-M - Unofficial version to fix some errors which appear on newer android versions (7+). Also the first version used on this fork.  
