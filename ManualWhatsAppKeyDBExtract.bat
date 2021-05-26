@@ -25,23 +25,12 @@ echo.
 bin\adb.exe kill-server
 bin\adb.exe start-server
 bin\adb.exe wait-for-device
-bin\adb.exe shell getprop ro.build.version.sdk > tmp\sdkver.txt
-set /p sdkver=<tmp\sdkver.txt
-echo.
-if %sdkver% leq 13 (
-	set sdkver=
-	echo Unsupported Android Version - this method only works on 4.0 or higher :/
-	echo.
-	echo Cleaning up temporary files ...
-	del tmp\sdkver.txt /s /q
-	goto exit
-)
 
 Echo If you have the newest Whatsapp version, it may not work. Please install the legacy from here http://whatcrypt.com/WhatsApp-2.11.431.apk
-Echo or place it in the same directory as this batch (you may had to edit the batch if you got it from somewhere else)
+Echo or place it in the same directory as this batch (you may had to edit the batch if you got it from somewhere else, line 33)
 Pause
-bin\adb.exe install -r -d WhatsApp-2.11.431.apk
 
+bin\adb.exe install -r -d WhatsApp-2.11.431.apk
 echo After that, please start/launch downgraded WhatsApp application if you haven't.
 echo It seems to help avoiding empty or incomplete backup via ^"adb backup^" command
 pause 
