@@ -1,7 +1,7 @@
 @echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
 color 0a
-title WhatsApp Key/DB Extractor 4.7 Enhanced 1.0 (Unofficial by p4r4d0x86)
+title Manual WhatsApp Key/DB Extractor 4.7 Enhanced 1.0 (by SimonGhoul)
 echo.
 echo =========================================================================
 echo = This script will extract the WhatsApp Key file and DB on Android 4.0+ =
@@ -11,8 +11,8 @@ echo = a legacy version will be installed temporarily in order to get backup =
 echo = permissions. You will NOT lose ANY data and your current version will =
 echo = be restored at the end of the extraction process so try not to panic. =
 echo = Script by: TripCode (Greets to all who visit: XDA Developers Forums). =
-echo = Thanks to: dragomerlin for ABE and to Abinash Bishoyi for being cool. =
-echo =         ###       Version: v4.7-E1.0 (08/05/2019)        ###          =
+echo =  p4r4d0x86 says dragomerlin for ABE and Abinash Bishoyi are cool.     =
+echo =         ###       Version: v4.7-E1.0-M (08/05/2019)        ###          =
 echo =========================================================================
 echo.
 if not exist bin (
