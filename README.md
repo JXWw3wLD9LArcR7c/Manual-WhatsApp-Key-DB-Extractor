@@ -18,7 +18,7 @@ For a more automated and less hands-on version of this, visit https://github.com
 - It won't detect your android version. Instead you need to choose the file that fits your version.
 
 ###### BRANCH UPDATES:
-v4.7-E1.0-M - Unofficial version to fix some errors which appear on newer android versions (7+). Also the first version used on this fork
+v4.7-E1.0-M - Unofficial version to fix some errors which appear on newer android versions (7+). Also the first version used on this fork.
 v4.0 - Fixed issues with Android API 14-17 (4.0-4.2 Jelly Bean).
 v4.1 - Added support for Android API 23 (6.0-6.0.1 Marshmallow).
 v4.2 - Added support for specifying adb backup passwords.
