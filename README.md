@@ -27,6 +27,7 @@ v4.7 - Added new sanity checks and support for Android API 24 (7.0 Nougat).
 ###### PREREQUISITES:
  1. O/S: Windows Vista, Windows 7, Windows 8, Windows 10 
  2. Java - If not installed: https://www.java.com/en/download/  
+ 3. An old whatsapp version with no adb backup restrictions: http://whatcrypt.com/WhatsApp-2.11.431.apk (You have to install this before doing this)
  3. ADB (Android Debug Bridge) Drivers - If not installed: https://developer.android.com/studio/releases/platform-tools
  4. USB Debugging must be enabled on the target device. Settings -> Developer Options -> (Debugging) USB debugging  
      If you cannot find Developer Options then please go to: Settings -> About phone/device and tap the Build number  
