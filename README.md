@@ -18,15 +18,15 @@ For a more automated and less hands-on version of this, visit https://github.com
 - It won't detect your android version. Instead you need to choose the file that fits your version.
 
 ###### BRANCH UPDATES:
-v4.7-E1.0-M - Unofficial version to fix some errors which appear on newer android versions (7+). Also the first version used on this fork.
-v4.0 - Fixed issues with Android API 14-17 (4.0-4.2 Jelly Bean).
-v4.1 - Added support for Android API 23 (6.0-6.0.1 Marshmallow).
-v4.2 - Added support for specifying adb backup passwords.
-v4.3 - Added PowerShell version as optional alternative to bat version.
-v4.4 - Changed primary mirror for legacy apk.
-v4.5 - Fixed issue pushing cipher key to emulated storage.
-v4.6 - Updated primary mirror for legacy apk (again).
-v4.7 - Added new sanity checks and support for Android API 24 (7.0 Nougat).
+v4.7-E1.0-M - Unofficial version to fix some errors which appear on newer android versions (7+). Also the first version used on this fork.  
+v4.0 - Fixed issues with Android API 14-17 (4.0-4.2 Jelly Bean).  
+v4.1 - Added support for Android API 23 (6.0-6.0.1 Marshmallow).  
+v4.2 - Added support for specifying adb backup passwords.  
+v4.3 - Added PowerShell version as optional alternative to bat version.  
+v4.4 - Changed primary mirror for legacy apk.  
+v4.5 - Fixed issue pushing cipher key to emulated storage.  
+v4.6 - Updated primary mirror for legacy apk (again).  
+v4.7 - Added new sanity checks and support for Android API 24 (7.0 Nougat).  
 
 ###### PREREQUISITES:
  1. O/S: Windows Vista, Windows 7, Windows 8, Windows 10 
