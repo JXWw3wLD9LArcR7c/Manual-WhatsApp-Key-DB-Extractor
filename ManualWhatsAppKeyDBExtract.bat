@@ -37,141 +37,12 @@ if %sdkver% leq 13 (
 	goto exit
 )
 
-REM Getting variables
-bin\adb.exe shell pm path com.whatsapp | bin\grep.exe package > tmp\wapath.txt
-bin\adb.exe shell "echo $EXTERNAL_STORAGE" > tmp\sdpath.txt
-bin\adb.exe shell dumpsys package com.whatsapp | bin\grep.exe versionName > tmp\wapver.txt
-bin\curl.exe -sI http://www.cdn.whatsapp.net/android/2.11.431/WhatsApp.apk | bin\grep.exe Content-Length > tmp\waplen.txt
-set /p apkflen=<tmp\waplen.txt
-set apkflen=%apkflen:Content-Length: =%
-if %apkflen% == 18329558 (
-	set apkfurl=http://www.cdn.whatsapp.net/android/2.11.431/WhatsApp.apk
-) else (
-	set apkfurl=http://whatcrypt.com/WhatsApp-2.11.431.apk
-)
-set /p apkpath=<tmp\wapath.txt
-set /p sdpath=<tmp\sdpath.txt
-set apkpath=%apkpath:package:=%
-set /p version=<tmp\wapver.txt
+Echo If you have the newest Whatsapp version, it may not work. Please install the legacy from here
+echo Press any key once started
+Pause
+http://whatcrypt.com/WhatsApp-2.11.431.apk
 
-for %%A in ("%apkpath%") do (
-	set apkname=%%~nxA
-)
-
-for /F "tokens=1" %%k in ("%version%") do (
-	set %%k
-	set version=%%v
-)
-
-echo.
-echo ##### WhatsApp installation and version checks #####
-REM FIXME == or EQU ? This test is not working correctly 
-for %%A in (tmp\wapath.txt) do if %%~zA==0 (
-	set apkpath=
-	echo.
-	echo WhatsApp is not installed on the target device
-	
-	if exist tmp\base.apk (
-		:base
-		echo A backuped version has been found in /tmp folder and could be restored
-		echo Legacy application can't be directly installed on Android 7.0+
-		set /p base=" Do you want to restore previous WhatsApp version (Y/N)? "
-		echo.
-		if /i "!base!" == "N" goto exit
-		if /i "!base!" == "Y" (
-			echo Restoring WhatsApp previous version
-			if %sdkver% geq 17 (
-				bin\adb.exe install -r -d tmp\base.apk
-			) else (
-				bin\adb.exe install -r tmp\base.apk
-			)
-			echo Restore complete
-			echo Please restart the script
-			goto exit
-		) else (
-			echo Unsupported option
-			goto base
-		)
-	)
-) 
-	
-echo WhatsApp %versionName% installed
-
-if %versionName% gtr 2.11.431 (
-	echo WhatsApp downgrade required
-	if not exist tmp\LegacyWhatsApp.apk (
-		echo Downloading legacy WhatsApp 2.11.431 to local folder
-		bin\curl.exe -o tmp\LegacyWhatsApp.apk %apkfurl%
-	) else (
-		echo Found legacy WhatsApp 2.11.431 in local folder
-	)
-	echo.
-	
-	if %sdkver% geq 11 (
-		bin\adb.exe shell am force-stop com.whatsapp
-	) else (
-		bin\adb.exe shell am kill com.whatsapp
-	)
-	
-	echo Backing up WhatsApp %versionName%
-	REM FIXME : add a more secure check
-	bin\adb.exe pull %apkpath% tmp
-	echo Backup complete
-	echo.
-	if %sdkver% geq 23 (
-		echo Removing WhatsApp %versionName% skipping data
-		bin\adb.exe shell pm uninstall -k com.whatsapp
-		REM FIXME : add a more secure check
-		echo Removal complete
-		echo.
-	)
-
-	REM Legacy WhatsApp installation
-	echo Installing legacy WhatsApp 2.11.431
-	if %sdkver% geq 24 (
-		echo Android version 7.0 or higher detected
-		echo Device may have to be rebooted to downgrade and avoid failure 
-		echo like ^"[INSTALL_FAILED_VERSION_DOWNGRADE]^"
-		echo.
-		:reboot
-		set /p reboot="Do you want to reboot (Y/N)? "
-		echo.
-		if /i "!reboot!" == "Y" goto rebootY
-		if /i "!reboot!" == "N" goto rebootN
-		echo Unsupported option
-		goto reboot
-
-		:rebootY 
-		bin\adb.exe reboot
-		bin\adb.exe wait-for-device
-		echo Press any key once device is ready (to avoid error ^"can't find package ...^")
-		pause
-
-		:rebootN
-		if %sdkver% geq 17 (
-			bin\adb.exe install -r -d tmp\LegacyWhatsApp.apk
-		) else (
-			bin\adb.exe install -r tmp\LegacyWhatsApp.apk
-		)
-	)
-	
-	REM Test if downgrade was successfull
-	bin\adb.exe shell dumpsys package com.whatsapp | bin\grep.exe versionName > tmp\newwapver.txt
-	set /p currentversion=<tmp\newwapver.txt
-	for /F "tokens=1" %%j in ("%currentversion%") do (
-		set %%j
-		set currentversion=%%v
-	)
-	if %versionName% equ 2.11.431 (
-		echo Legacy WhatsApp correctly downgraded
-	) else (
-		goto exit
-	)
-) else (
-	echo No downgrade required
-)
-
-echo Please start/launch downgraded WhatsApp application
+echo After that, please start/launch downgraded WhatsApp application if you haven't.
 echo It seems to help avoiding empty or incomplete backup via ^"adb backup^" command
 echo Press any key once started
 pause 
@@ -211,16 +82,6 @@ if /i "!backup!" == "A" (
 	) else (
 		echo Unsupported option
 		goto backup
-	)
-)
-
-REM Test on backup size
-For %%f in (tmp\whatsapp.ab) do (
-	echo Size of tmp\whatsapp.ab is %%~zf bytes
-	if %%~zf equ 0 (
-		echo Backup is empty
-		echo Backup extraction skipped
-		goto clean
 	)
 )
 
@@ -284,61 +145,10 @@ if exist tmp\whatsapp.ab (
 if exist tmp\whatsapp.tar (
 	del tmp\whatsapp.tar /s /q
 )
-if exist tmp\waplen.txt (
-	del tmp\waplen.txt /s /q
-)
-if exist tmp\sdpath.txt (
-	del tmp\sdpath.txt /s /q
-)
-if exist tmp\wapath.txt (
-	del tmp\wapath.txt /s /q
-)
-if exist tmp\wapver.txt (
-	del tmp\wapver.txt /s /q
-)
-if exist tmp\newwapver.txt (
-	del tmp\newwapver.txt /s /q
-)
-if exist tmp\sdkver.txt (
-	del tmp\sdkver.txt /s /q
-)
 if exist tmp\apps (
 	rmdir tmp\apps /s /q
 )
 echo Done
-
-
-echo.
-echo ##### Restore previous WhatsApp version #####
-if not exist tmp\%apkname% (
-	echo Downloading WhatsApp %versionName% to local folder
-	bin\curl.exe -o tmp\%apkname% http://www.cdn.whatsapp.net/android/%versionName%/WhatsApp.apk
-)
-
-
-if exist tmp\%apkname% (
-	:restore
-	echo When debugging or on error, you might save time by not restoring the updated version.
-	set /p restore="Do you want to restore previous WhatsApp version (Y/N)? "
-	echo.
-	if /i "!restore!" == "Y" goto restoreY
-	if /i "!restore!" == "N" goto exit
-	echo Unsupported option
-	goto :restore
-
-	:restoreY
-	echo Restoring WhatsApp previous version
-	if %sdkver% geq 17 (
-		bin\adb.exe install -r -d tmp\%apkname%
-	) else (
-		bin\adb.exe install -r tmp\%apkname%
-	)
-	echo.
-	echo Restore complete
-	echo.
-	echo Removing WhatsApp previous version temporary apk
-	del tmp\%apkname% /s /q
-)
 
 
 :exit
@@ -346,14 +156,6 @@ echo.
 echo Exiting ...
 echo.
 set sdkver=
-set apkpath=
-set sdpath=
-set apkname=
-set apkflen=
-set apkfurl=
-set version=
-set versInfo=
-set versionName=
 set password=
 bin\adb.exe kill-server
 pause
